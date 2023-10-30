@@ -8,16 +8,13 @@ import java.net.URL;
 
 public class HttpStatusImageDownloader {
     public void downloadStatusImage(int code) throws Exception {
-        String url = "https://http.cat/" + code + ".jpg";
+        HttpStatusChecker httpStatusChecker = new HttpStatusChecker();
+        String url = httpStatusChecker.getStatusImage(code);
         HttpURLConnection connection = null;
 
         try {
             URL imageUrl = new URL(url);
             connection = (HttpURLConnection) imageUrl.openConnection();
-
-            if (connection.getResponseCode() == 404) {
-                throw new Exception("Image not found for status code " + code);
-            }
 
             if (connection.getResponseCode() == 200) {
                 InputStream inputStream = connection.getInputStream();
