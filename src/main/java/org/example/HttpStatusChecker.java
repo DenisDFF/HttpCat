@@ -19,7 +19,7 @@ public class HttpStatusChecker {
             if (connection.getResponseCode() == 200) {
                 return url;
             } else {
-                throw new Exception("Http reqest failed with cod " + connection.getResponseCode());
+                throw new Exception("Http request failed with cod " + connection.getResponseCode());
             }
         } finally {
             if (connection != null) {
